@@ -1,0 +1,320 @@
+
+<!DOCTYPE HTML>
+
+<!--
+ Berkeley Vision and Learning Center (BVLC)
+ 
+ Design based on:
+ Strongly Typed 1.0 by HTML5 UP
+ html5up.net | @n33co
+ Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+ -->
+<html>
+    <head>
+        <title>PIPPI 2020</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=1040" />
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700" rel="stylesheet" type="text/css" />
+        <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.js"></script>
+        <script src="js/jquery.dotdotdot.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-panels.min.js"></script>
+        <script src="js/jquery.slides.min.js"></script>
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+            <noscript>
+                <link rel="stylesheet" href="css/style.css" />
+                <link rel="stylesheet" href="css/style-desktop.css" />
+                <link rel="stylesheet" href="css/skel-noscript.css" />
+            </noscript>
+
+        <style type="text/css">
+.numbers {
+    padding: 0px;
+    width: 45px;
+    text-align: center;
+    font-family: Arial;             
+    font-size: 28px;
+    font-weight: bold;    /* options are normal, bold, bolder, lighter */
+    font-style: normal;   /* options are normal or italic */
+    color: #000000;       /* change color using the hexadecimal color codes for HTML */
+}
+.title {    /* the styles below will affect the title under the numbers, i.e., “Days”, “Hours”, etc. */
+    border-style: none;
+    padding: 0px 0px 3px 0px;
+    width: 45px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 10px;
+    font-weight: bold;    /* options are normal, bold, bolder, lighter */
+    color: #000000;       /* change color using the hexadecimal color codes for HTML */
+}
+#table {
+    width: 400px;
+    height: 70px;
+    border-style: none;
+    /*border-width: 3px;
+    /* border-color: #FFFFFF;       /* change color using the hexadecimal color codes for HTML */
+    background-color: #FFFFFF;   /* change color using the hexadecimal color codes for HTML */
+    margin: 0px auto;
+    position: relative;   /* leave as "relative" to keep timer centered on your page, or change to "absolute" then change the values of the "top" and "left" properties to position the timer */
+    top: 0px;            /* change to position the timer */
+    left: 0px;            /* change to position the timer; delete this property and it's value to keep timer centered on page */
+}
+</style>
+
+<script type="text/javascript">
+
+/*
+Count down until any date script-
+By JavaScript Kit (www.javascriptkit.com)
+Over 200+ free scripts here!
+Modified by Robert M. Kuhnhenn, D.O. 
+on 5/30/2006 to count down to a specific date AND time,
+on 10/20/2007 to a new format, and 1/10/2010 to include
+time zone offset.
+*/
+
+var current="Thank you for your submissions. The submission deadline has passed."    //-->enter what you want the script to display when the target date and time are reached, limit to 20 characters
+var year=2020;    //-->Enter the count down target date YEAR
+var month=7;      //-->Enter the count down target date MONTH
+var day=1;       //-->Enter the count down target date DAY
+var hour=23;      //-->Enter the count down target date HOUR (24 hour clock)
+var minute=59;    //-->Enter the count down target date MINUTE
+var tz=-7;        //-->Offset for your timezone in hours from UTC (see http://wwp.greenwichmeantime.com/index.htm to find the timezone offset for your location)
+
+//    DO NOT CHANGE THE CODE BELOW!
+var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+
+function countdown(yr,m,d,hr,min){
+    theyear=yr;themonth=m;theday=d;thehour=hr;theminute=min;
+    var today=new Date();
+    var todayy=today.getYear();
+    if (todayy < 1000) {todayy+=1900;}
+    var todaym=today.getMonth();
+    var todayd=today.getDate();
+    var todayh=today.getHours();
+    var todaymin=today.getMinutes();
+    var todaysec=today.getSeconds();
+    var todaystring1=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec;
+    var todaystring=Date.parse(todaystring1)+(tz*1000*60*60);
+    var futurestring1=(montharray[m-1]+" "+d+", "+yr+" "+hr+":"+min);
+    var futurestring=Date.parse(futurestring1)-(today.getTimezoneOffset()*(1000*60));
+    var dd=futurestring-todaystring;
+    var dday=Math.floor(dd/(60*60*1000*24)*1);
+    var dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1);
+    var dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+    var dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+    if(dday<=0&&dhour<=0&&dmin<=0&&dsec<=0){
+        document.getElementById('count2').innerHTML=current;
+        document.getElementById('count2').style.display="inline";
+        document.getElementById('count2').style.width="390px";
+        document.getElementById('dday').style.display="none";
+        document.getElementById('dhour').style.display="none";
+        document.getElementById('dmin').style.display="none";
+        document.getElementById('dsec').style.display="none";
+        document.getElementById('days').style.display="none";
+        document.getElementById('hours').style.display="none";
+        document.getElementById('minutes').style.display="none";
+        document.getElementById('seconds').style.display="none";
+        document.getElementById('spacer1').style.display="none";
+        document.getElementById('spacer2').style.display="none";
+        return;
+    }
+    else {
+        document.getElementById('count2').style.display="none";
+        document.getElementById('dday').innerHTML=dday;
+        document.getElementById('dhour').innerHTML=dhour;
+        document.getElementById('dmin').innerHTML=dmin;
+        document.getElementById('dsec').innerHTML=dsec;
+        setTimeout("countdown(theyear,themonth,theday,thehour,theminute)",1000);
+    }
+}
+</script>
+
+
+            </head>
+    <body class="homepage" onload="countdown(year,month,day,hour,minute)">
+        <!-- Header Wrapper -->
+        <div id="header-wrapper">
+            <!-- Header -->
+            <div id="header" class="container">
+                <!-- Logo -->
+                <!--<h1 id="logo">
+                 <a id="home" href="#"></a>
+                 </h1>-->
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul style="padding-top: 10px; padding-bottom: 2em">
+                        <li>
+                            <a href="index.html#header" class="">
+                                <span style="
+                                    position: relative;
+                                    width: 261px;
+                                    display: inline-block;
+                                    height: 10px;
+                                    ">
+                                    <img src="images/pippi_logo_simple.png" style="
+                                    position: absolute;
+                                    left: 0;
+                                    width: 200px;
+                                    top: -30px;
+                                    "/>
+                                </span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="index.html#header"><span>Home</span></a>
+                        </li>
+                        <li>
+                            <a href="program.html"><span>Program</span></a>
+                        </li>                   
+                        <li>
+                            <a href="participation.html"><span>Paper Guidelines</span></a>
+                        </li>
+						<li>
+                            <a href="Pcommittee.html"><span>Program Committee</span></a>
+                        </li>
+						<li>
+                            <a href="committee.html"><span>Committee</span></a>
+                        </li>
+                        <li>
+                            <a href="contact.html"><span>Contact</span></a>    
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="banner-wrapper">
+            <div class="inner">
+                <!-- Banner -->
+                <section class="banner container">
+                    <br>
+                    <h2 id="faculty">Paper Guidelines</h2>
+                    
+                </section>
+            </div>
+        </div>
+        <!-- Features Wrapper -->
+        <div class="features-wrapper">
+               <table id="table" border="0">
+    <tr>
+        <td align="center" colspan="6"><div class="numbers" id="count2" style="padding: 5px 0 0 0; ">title?</div></td>
+    </tr>
+    <tr><td colspan="6" style="padding: 0px 0px 15px 0px;">Paper submissions are due in</td></tr>
+    <tr id="spacer1">
+        <td align="center" ><div class="numbers" ></div></td>
+        <td align="center" ><div class="numbers" id="dday"></div></td>
+        <td align="center" ><div class="numbers" id="dhour"></div></td>
+        <td align="center" ><div class="numbers" id="dmin"></div></td>
+        <td align="center" ><div class="numbers" id="dsec"></div></td>
+        <td align="center" ><div class="numbers" ></div></td>
+    </tr>
+    <tr id="spacer2">
+        <td align="center" ><div class="title" ></div></td>
+        <td align="center" ><div class="title" id="days">Days</div></td>
+        <td align="center" ><div class="title" id="hours">Hours</div></td>
+        <td align="center" ><div class="title" id="minutes">Minutes</div></td>
+        <td align="center" ><div class="title" id="seconds">Seconds</div></td>
+        <td align="center" ><div class="title" ></div></td>
+    </tr>
+</table>
+		<section class="feature container">
+			<br>
+                        <p style="margin: 5px 5px 5px 5px;text-align:left;">The PIPPI Workshop is co-located with <a href="http://www.miccai2020.org/en/">MICCAI 2020</a> in Lima, Peru on Xth of October, 2020.</p>
+                        <br>
+                        
+						 <h2 style="font-size:huge; padding-top: 0; margin: 30px 0px 0px 0px; text-align:left;"><strong>Presentation Guidelines</strong></h2>
+                        <ul style="text-align:left;">
+                            <li style="padding-left: 30px;"> Presentation time 15 minutes + 5 minutes questions </li>
+                            <li style="padding-left: 30px;"> Venue: Lima Convention Center - Room: t.b.a. </li>
+                            <li style="padding-left: 30px;"> The presentation slides have to be uploaded via the CMT System by <strong><font color="#CC0099">September 30th 2020 (23:59 CEST) </font></strong></li>
+							<li style="padding-left: 30px;"> Please notify the organisers after your arrival to confirm your time slot</li>  
+                        </ul>
+						
+                        <h2 style="font-size:huge; padding-top: 0; margin: 30px 0px 0px 0px; text-align:left;"><strong>Important Dates</strong></h2>
+                        <ul style="text-align:left;">
+                            <li style="padding-left: 30px;"><strong>July 1st, 2020, 23:59 (CEST)</strong> </li>
+                            <li style="padding-left: 30px;"><strong>August 16th, 2020</strong> : Notification of paper acceptance</li>
+                            <li style="padding-left: 30px;"><strong>August 27th, 2020</strong> : Camera-ready paper due</li>
+                            <li style="padding-left: 30px;"><strong>October Xth, 2020 t.b.a. </strong> : PIPPI 2020, Lima Convention Center </li>
+                        </ul>
+                         <h2 style="font-size:huge; padding-top: 0; margin: 0px 0px 0px 0px; text-align:left;"><strong>Submission Instructions</strong></h2>
+                            
+							<p style="text-align: left; padding-left: 30px;"> The workshop is a half-day event with invited speakers and oral and poster presentations. Attendees are cordially invited to submit their work. Papers will be limited to ten pages of <a href="www.springer.com/lncs"> Springer LNCS format </a> . All papers will be reviewed by at least two reviewers with double blind policy. Papers will be selected based on relevance, significance and novelty of results, technical merit, and clarity of presentation. Papers accepted for PIPPI 2020 will be published within the MICCAI 2020 workshop proceeding in a LNCS volume. </p>
+							 <ul>
+                           <li style="text-align:left;padding-left: 30px;"><strong>Submission page</strong> : <a href="https://cmt3.research.microsoft.com/PIPPI2020">PIPPI 2020 CMT</a></li>
+                            <li style="text-align:left;padding-left: 30px;"><strong>Paper template</strong> : Submissions should be 10 pages or less including references, in the <a href="http://www.springer.com/us/computer-science/lncs/conference-proceedings-guidelines">final LNCS paper template</a></li>
+                            <li style="text-align:left;padding-left: 30px;"><strong>Topics</strong> : Topics discussed at PIPPI 2020 include, but are not limited to: 
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Image registration, segmentation or classification  </li> 
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Image reconstruction </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Atlas construction </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Diffusion imaging (including tractography applications)</li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Advanced structural imaging (e.g. advanced DWO or g-ratio analysis)
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Advanced functional imaging (e.g. network-based analysis) </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Fetal and/or placental image analysis </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Cardio-pulmonary image analysis </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Abdominal imaging </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Measurement of long-term cognitive outcome </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Correlation of imaging biomarkers with functional measurements </li>
+									<li style="margin: 0px 0px 0px 40px;text-align:left;"> Novel dataset for developing cohort analysis </li>
+							</li>
+                        </ul>
+							
+						 <h2 style="font-size:huge; padding-top: 0; margin: 0px 0px 0px 0px; text-align:left;"><strong>Anonymity Guidelines</strong></h2>
+                        
+						<p style="text-align: left; padding-left: 30px;"> The anonymity guidelines require to remove the author and affiliation information from the title page and the paper's header. The authors have to make references to their work anonymously, by citing it in the third person. If the anonymity requirements are not fulfilled, automatic paper rejection is performed.</p>
+                        <h2 style="font-size:huge; padding-top: 0; margin: 0px 0px 0px 0px; text-align:left;"><strong>Camera Ready Guidelines</strong></h2>
+						
+						<p style="text-align: left; padding-left: 30px;"> Your work was reviewed by at least two independent reviewers, who have provided detailed constructive feedback.
+						<br><br>
+						<strong> *** Please incorporate the reviewers‘ comments into your manuscript.*** </strong>
+						<br><br>
+						Additionally, do not forget to remove the anonymization, add any acknowledgments (if applicable) and add the full name of the authors, their affiliation and address, and at least the e-mail address of the corresponding author, following the LNCS Springer guidelines.
+ 
+						The following three documents must be uploaded by August 27th, 2020 (23:59 Pacific Daylight Time) via the <a href="https://cmt3.research.microsoft.com/PIPPI2020">PIPPI 2020 Submission System </a>: 
+
+						
+						<ul>
+						<li style="margin: 0px 0px 0px 40px;text-align:left;"> * Final version of the camera ready paper (*.PDF) </li>
+						<li style="margin: 0px 0px 0px 40px;text-align:left;"> * LateX or Word source files (*.ZIP)</li>
+						<li style="margin: 0px 0px 0px 40px;text-align:left;"> * The signed consent to publish Springer form (Please download here <a href="images/CtP_LNCS_SIP_PIPPI2020.pdf">(PDF)</a>) by the corresponding author.</li>
+						</ul> 
+						</p>
+								
+						<p style="text-align: left; padding-left: 30px;">IMPORTANT NOTE: Digital signatures are not accepted on the consent form. Also, the corresponding author must be available to carry out a proof check of the paper after it has been sent to Springer within 72 hours. He or she cannot be changed once the paper and the copyright form have been sent to Springer. Please note that for each paper at least one author needs to register for the workshop via the <a href="https://miccai2018.org/en/REGISTRATION.html"> MICCAI registration system </a>. The early bird deadline ends on t.b.a. 2020. If you have any additional questions do not hesitate to contact us.
+						</p>
+						
+                        <h2 style="font-size:huge; padding-top: 0; margin: 0px 0px 0px 0px; text-align:left;"><strong>Best Paper Award</strong></h2>
+						<p style="padding-left:30px;text-align:left;"> The best paper will be selected on bases on the quality of the work and presentation at the workshop by the session chairs. The winner will receive a best paper prize and corresponding certificate. </p>
+						
+</p> <br>
+		</section>
+        </div>
+        <div class="footer">
+              <div class="container">
+                    <div class="row">
+                          <div class="7u">
+                               <p>&copy; PIPPI 2020</p>
+                            </div>
+                          <div class="1u">
+                               <a href="mailto:pippi-organizers@googlegroups.com" class="fa fa-envelope" style="font-size:1.5em;" data-placement="top" data-toggle="tooltip" title="Email"></a>
+                            </div>
+                          
+                          <div class="1u">
+                              <a href="https://www.facebook.com/MICCAI.PIPPI" class="fa fa-facebook" data-placement="top" style="font-size:1.5em;" data-toggle="tooltip" title="Facebook"></a>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+        <script src="//static.getclicky.com/js" type="text/javascript"></script>
+        <script type="text/javascript">try{ clicky.init(100926441); }catch(e){}</script>
+        <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100926441ns.gif" /></p></noscript>
+    </body>
+</html>
